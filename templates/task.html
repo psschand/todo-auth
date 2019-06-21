@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome/css/all.css') }}">
+</head>
+</html>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content is-active">
+    <h1 style="text-align: center">{{ name }}, task master</h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">There are no tasks. Create one below! </h4>
+    {% else %}
+    <table class="table is-bordered is-striped  is-hoverable is-narrow is-responsive">
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td> {{ task.date_created.date() }}</td>
+            <td>
+                <a class="button is-danger" href="/delete/{{ task.id }}">
+                    <span>Delete</span>
+                    <span class="icon is-small">
+                    <i class="fas fa-times"></i>
+                    </span>
+                </a>
+                <a class="button is-success" href="/update/{{ task.id }}">
+                    <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                    </span>
+                    <span>Update</span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <div class="form is-active">
+        <form method="POST">
+            <input class="input is-primary is-rounded is-focused" type="text" name="content" placeholder="Task" required>
+            <input class="button is-rounded is-info" type="submit" value="Add Task" >
+        </form>
+    </div>
+</div>
+
+{% endblock %}

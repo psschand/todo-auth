@@ -1,0 +1,39 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.content {
+    margin: 0 auto;
+}
+
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+    vertical-align: text-top
+}
+
+
+.form {
+    text-align: center;
+    padding: 20px;
+}
+
+#content {
+    width: 100%;
+}
+
+form > .button, form > .buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}

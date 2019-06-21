@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    <h1 style="text-align: center">Update Task</h1>
+
+    <div class="form">
+        <form action="/update/{{ task.id }}" method="POST">
+            <input class="input is-primary is-rounded is-focused" type="text" name="content" id="content" value="{{task.content}}">
+
+            <div class="buttons">
+                <input class="button is-rounded is-info" style="margin-left: auto" type="submit" value="Update">
+                <a class="button is-rounded is-warning" style="margin-right: auto" href="{{ url_for('main.task') }}">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
+</html>
